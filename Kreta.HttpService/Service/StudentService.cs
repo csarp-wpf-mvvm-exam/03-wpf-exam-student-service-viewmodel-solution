@@ -67,6 +67,18 @@ namespace Kreta.HttpService.Service
         public async Task<ControllerResponse> DeleteAsync(Guid id)
         {
             ControllerResponse defaultResponse = new();
+            if (_httpClient is not null)
+            {
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            defaultResponse.ClearAndAddError("Az adatok frissítés nem lehetséges!");
             return defaultResponse;
         }
 
@@ -74,6 +86,18 @@ namespace Kreta.HttpService.Service
         public async Task<ControllerResponse> InsertAsync(Student student)
         {
             ControllerResponse defaultResponse = new();
+            if (_httpClient is not null)
+            {
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            defaultResponse.ClearAndAddError("Az adatok frissítés nem lehetséges!");
             return defaultResponse;
         }
     }
