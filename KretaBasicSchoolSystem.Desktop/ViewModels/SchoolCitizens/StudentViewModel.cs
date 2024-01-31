@@ -58,5 +58,10 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
                 Students = new ObservableCollection<Student>(students);
             }
         }
+
+        [RelayCommand]
+        public async Task DoSave(Student newStudent)
+        {
+        }
     }
 }
