@@ -60,6 +60,7 @@ namespace Kreta.HttpService.Service
                     Debug.WriteLine(ex.Message);
                 }
             }
+            defaultResponse.ClearAndAddError("Az adatok frissítés nem lehetséges!");
             return defaultResponse;
         }
 
