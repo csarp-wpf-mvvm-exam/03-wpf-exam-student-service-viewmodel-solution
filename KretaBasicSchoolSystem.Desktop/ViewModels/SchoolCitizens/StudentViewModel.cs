@@ -52,11 +52,7 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
 
         public async override Task InitializeAsync()
         {
-            if (_studentService is not null)
-            {
-                List<Student> students = await _studentService.SelectAllStudentAsync();
-                Students = new ObservableCollection<Student>(students);
-            }
+            await Update();
         }
 
         [RelayCommand]
@@ -74,6 +70,15 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
             if (_studentService is not null)
             {
                 ControllerResponse result = await _studentService.DeleteAsync(studentToDelete.Id);
+            }
+        }
+
+        private async Task Update()
+        {
+            if (_studentService is not null)
+            {
+                List<Student> students = await _studentService.SelectAllStudentAsync();
+                Students = new ObservableCollection<Student>(students);
             }
         }
     }
