@@ -57,6 +57,8 @@ namespace Kreta.HttpService.Service
                     HttpResponseMessage httpResponse = await _httpClient.PutAsJsonAsync("api/Student", studentDto);
                     if (httpResponse.StatusCode == HttpStatusCode.BadRequest)
                     {
+                        string content = await httpResponse.Content.ReadAsStringAsync();
+                        ControllerResponse? response = JsonConvert.DeserializeObject<ControllerResponse>(content);
                     }
                     else if (!httpResponse.IsSuccessStatusCode)
                     {
