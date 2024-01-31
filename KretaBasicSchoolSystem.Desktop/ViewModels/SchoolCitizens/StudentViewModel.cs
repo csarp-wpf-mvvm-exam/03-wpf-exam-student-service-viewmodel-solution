@@ -62,6 +62,10 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
         [RelayCommand]
         public async Task DoSave(Student newStudent)
         {
+            if (_studentService is not null)
+            {
+                await _studentService.UpdateAsync(newStudent);
+            }
         }
     }
 }
