@@ -46,7 +46,7 @@ namespace Kreta.HttpService.Service
             return new List<Student>();
         }
 
-        public async Task<ControllerResponse> Update(StudentDto studentDto)
+        public async Task<ControllerResponse> UpdateAsync(Student studentDto)
         {
             ControllerResponse defaultResponse = new();
             return defaultResponse;
