@@ -58,7 +58,16 @@ namespace Kreta.HttpService.Service
                     if (httpResponse.StatusCode == HttpStatusCode.BadRequest)
                     {
                     }
+                    else if (!httpResponse.IsSuccessStatusCode)
+                    {
+                        httpResponse.EnsureSuccessStatusCode();
+                    }
+                    else
+                    {
+                        return defaultResponse;
+                    }
                 }
+
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
