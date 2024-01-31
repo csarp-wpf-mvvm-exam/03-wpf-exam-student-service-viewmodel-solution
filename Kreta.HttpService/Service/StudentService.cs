@@ -91,14 +91,32 @@ namespace Kreta.HttpService.Service
             {
                 try
                 {
-
+                    HttpResponseMessage httpResponse = await _httpClient.DeleteAsync($"api/Student/{id}");
+                    if (httpResponse.StatusCode == HttpStatusCode.BadRequest)
+                    {
+                        string content = await httpResponse.Content.ReadAsStringAsync();
+                        ControllerResponse? response = JsonConvert.DeserializeObject<ControllerResponse>(content);
+                        if (response is null)
+                        {
+                            defaultResponse.ClearAndAddError("A törlés http kérés hibát okozott!");
+                        }
+                        else return response;
+                    }
+                    else if (!httpResponse.IsSuccessStatusCode)
+                    {
+                        httpResponse.EnsureSuccessStatusCode();
+                    }
+                    else
+                    {
+                        return defaultResponse;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
                 }
             }
-            defaultResponse.ClearAndAddError("Az adatok frissítés nem lehetséges!");
+            defaultResponse.ClearAndAddError("Az adatok törlése nem lehetséges!");
             return defaultResponse;
         }
 
