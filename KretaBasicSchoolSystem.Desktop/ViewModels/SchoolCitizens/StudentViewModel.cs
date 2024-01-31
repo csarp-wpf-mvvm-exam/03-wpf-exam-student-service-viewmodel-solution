@@ -70,6 +70,10 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
             if (_studentService is not null)
             {
                 ControllerResponse result = await _studentService.DeleteAsync(studentToDelete.Id);
+                if (result.IsSuccess)
+                {
+                    await Update();
+                }
             }
         }
 
