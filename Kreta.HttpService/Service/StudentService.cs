@@ -46,14 +46,14 @@ namespace Kreta.HttpService.Service
             return new List<Student>();
         }
 
-        public async Task<ControllerResponse> UpdateAsync(Student studentDto)
+        public async Task<ControllerResponse> UpdateAsync(Student student)
         {
             ControllerResponse defaultResponse = new();
             if (_httpClient is not null)
             {
                 try
                 {
-
+                    HttpResponseMessage httpResponse = await _httpClient.PutAsJsonAsync("api/Student", studentDto);
                 }
                 catch (Exception ex)
                 {
