@@ -29,9 +29,15 @@ namespace Kreta.HttpService.Service
         {
             if (_httpClient is not null)
             {
-                List<StudentDto>? result = await _httpClient.GetFromJsonAsync<List<StudentDto>>("api/Student");
-                if (result is not null)
-                { 
+                List<StudentDto>? resultDto = await _httpClient.GetFromJsonAsync<List<StudentDto>>("api/Student");
+                if (resultDto is not null)
+                {
+                    List<Student> result = new List<Student>();
+                    foreach(StudentDto studentDto in resultDto)
+                    {
+                        result.Add(studentDto);
+                    }
+
                 }
             }
             return new List<Student>();
