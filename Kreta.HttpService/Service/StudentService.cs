@@ -59,6 +59,11 @@ namespace Kreta.HttpService.Service
                     {
                         string content = await httpResponse.Content.ReadAsStringAsync();
                         ControllerResponse? response = JsonConvert.DeserializeObject<ControllerResponse>(content);
+                        if (response is null)
+                        {
+                            defaultResponse.ClearAndAddError("A törlés http kérés hibát okozott!");
+                        }
+                        else return response;
                     }
                     else if (!httpResponse.IsSuccessStatusCode)
                     {
