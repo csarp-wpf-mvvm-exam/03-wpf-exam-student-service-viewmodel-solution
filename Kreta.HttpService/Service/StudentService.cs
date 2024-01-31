@@ -25,7 +25,7 @@ namespace Kreta.HttpService.Service
             }
         }
 
-        public async Task<List<Student>> SelectAllStudent()
+        public async Task<List<Student>> SelectAllStudentAsync()
         {
             return new List<Student>();
         }

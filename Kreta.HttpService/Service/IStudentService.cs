@@ -8,7 +8,7 @@ namespace Kreta.HttpService.Service
 {
     public interface IStudentService
     {
-        public Task<List<Student>> SelectAllStudent();
+        public Task<List<Student>> SelectAllStudentAsync();
         public Task<ControllerResponse> Update(StudentDto studentDto);
         public Task<ControllerResponse> DeleteAsync(Guid id);
         public Task<ControllerResponse> InsertAsync(Student student);

@@ -54,7 +54,7 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
         {
             if (_studentService is not null)
             {
-                List<Student> students = await _studentService.SelectAllStudent();
+                List<Student> students = await _studentService.SelectAllStudentAsync();
                 Students = new ObservableCollection<Student>(students);
             }
         }
