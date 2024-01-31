@@ -52,7 +52,7 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
 
         public async override Task InitializeAsync()
         {
-            await Update();
+            await UpdateView();
         }
 
         [RelayCommand]
@@ -60,7 +60,16 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
         {
             if (_studentService is not null)
             {
-                await _studentService.UpdateAsync(newStudent);
+                ControllerResponse result = new();
+                if (newStudent.HasId)
+                    result = await _studentService.UpdateAsync(newStudent);
+                else
+                    result = await _studentService.InsertAsync(newStudent);
+
+                if (!result.HasError)
+                {
+                    await UpdateView();
+                }
             }
         }
 
@@ -72,12 +81,12 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
                 ControllerResponse result = await _studentService.DeleteAsync(studentToDelete.Id);
                 if (result.IsSuccess)
                 {
-                    await Update();
+                    await UpdateView();
                 }
             }
         }
 
-        private async Task Update()
+        private async Task UpdateView()
         {
             if (_studentService is not null)
             {
