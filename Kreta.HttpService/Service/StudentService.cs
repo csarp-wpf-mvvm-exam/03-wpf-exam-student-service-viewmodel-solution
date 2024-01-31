@@ -35,7 +35,7 @@ namespace Kreta.HttpService.Service
                     List<Student> result = new List<Student>();
                     foreach(StudentDto studentDto in resultDto)
                     {
-                        result.Add(studentDto);
+                        result.Add(studentDto.ToStudent());
                     }
 
                 }
