@@ -50,9 +50,13 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
             _studentService = studentService;
         }
 
-        public override Task InitializeAsync()
+        public async override Task InitializeAsync()
         {
-            return base.InitializeAsync();
+            if (_studentService is not null)
+            {
+                List<Student> students = await _studentService.SelectAllStudent();
+                Students = new ObservableCollection<Student>(students);
+            }
         }
     }
 }
