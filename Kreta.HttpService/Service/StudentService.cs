@@ -53,8 +53,11 @@ namespace Kreta.HttpService.Service
             {
                 try
                 {
-                    StudentDto studentDto=student.ToStudentDto();
+                    StudentDto studentDto = student.ToStudentDto();
                     HttpResponseMessage httpResponse = await _httpClient.PutAsJsonAsync("api/Student", studentDto);
+                    if (httpResponse.StatusCode == HttpStatusCode.BadRequest)
+                    {
+                    }
                 }
                 catch (Exception ex)
                 {
