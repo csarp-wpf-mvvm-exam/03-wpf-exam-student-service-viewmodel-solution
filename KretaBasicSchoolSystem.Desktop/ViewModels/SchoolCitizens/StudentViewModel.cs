@@ -49,5 +49,10 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
 
             _studentService = studentService;
         }
+
+        public override Task InitializeAsync()
+        {
+            return base.InitializeAsync();
+        }
     }
 }
