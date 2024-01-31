@@ -37,6 +37,7 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
         [RelayCommand]
         public async Task ShowStudentView()
         {
+            CurrentChildViewModel = _studentViewModel;
         }
 
 
