@@ -49,6 +49,17 @@ namespace Kreta.HttpService.Service
         public async Task<ControllerResponse> UpdateAsync(Student studentDto)
         {
             ControllerResponse defaultResponse = new();
+            if (_httpClient is not null)
+            {
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
             return defaultResponse;
         }
 
