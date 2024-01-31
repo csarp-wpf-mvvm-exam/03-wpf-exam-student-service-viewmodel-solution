@@ -94,5 +94,11 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
                 Students = new ObservableCollection<Student>(students);
             }
         }
+
+        [RelayCommand]
+        void DoNewStudent()
+        {
+            SelectedStudent = new Student();
+        }
     }
 }
