@@ -67,5 +67,14 @@ namespace KretaBasicSchoolSystem.Desktop.ViewModels.SchoolCitizens
                 await _studentService.UpdateAsync(newStudent);
             }
         }
+
+        [RelayCommand]
+        public async Task DoRemove(Student studentToDelete)
+        {
+            if (_studentService is not null)
+            {
+                ControllerResponse result = await _studentService.DeleteAsync(studentToDelete.Id);
+            }
+        }
     }
 }
