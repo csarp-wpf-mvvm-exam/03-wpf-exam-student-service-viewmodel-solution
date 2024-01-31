@@ -27,6 +27,9 @@ namespace Kreta.HttpService.Service
 
         public async Task<List<Student>> SelectAllStudentAsync()
         {
+            if (_httpClient is not null)
+            {
+            }
             return new List<Student>();
         }
 
